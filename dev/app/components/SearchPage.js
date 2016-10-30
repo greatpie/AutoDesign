@@ -12,7 +12,7 @@ export default class SearchPage extends Component{
         const searchTitlePath = require('images/search/search_title.png');
         return(
             <div className="page">
-                <TopBar logoColor="org"/>
+                <TopBar theme="org"/>
                 <img className="search-title" src={searchTitlePath}/>
                 <VoiceInput/>
             </div>

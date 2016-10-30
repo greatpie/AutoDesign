@@ -7,13 +7,24 @@ import {Row, Col} from 'antd';
 
 export default class TopBar extends Component {
     static defaultProps = {
-        logoColor: 'blue'
+        theme: 'blue'
     };
 
     render() {
-        const colorPattern = this.props.logoColor;
-        const logoPath = require('images/logo_' + colorPattern + '.png');
-
+        const theme = this.props.theme;
+        const logoPath = require('images/logo_' + theme + '.png');
+        let tabBody;
+        if (theme == 'blue') {
+            tabBody = <div className="taps">
+                <div className="tap current-tap">Inspiration</div>
+                <div className="tap current-tap-red">Creation</div>
+            </div>
+        } else {
+            tabBody = <div className="taps">
+                <div className="tap ">Inspiration</div>
+                <div className="tap current-tap-red">Creation</div>
+            </div>
+        }
         return (
             <div>
                 <Row>
@@ -26,7 +37,9 @@ export default class TopBar extends Component {
                             <div className="tap current-tap-red">Creation</div>
                         </div>
                     </Col>
-                    <Col span={8} offset={6}><div className="account"><AccountBar/></div></Col>
+                    <Col span={8} offset={6}>
+                        <div className="account"><AccountBar theme={theme}/></div>
+                    </Col>
                 </Row>
             </div>
         )
